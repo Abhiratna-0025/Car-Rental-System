@@ -71,7 +71,7 @@ Each class handles CRUD operations using reusable methods.
 
 Clone the repository
 
-git clone https://github.com/your-username/car-rental-system.git
+git clone https://github.com/Abhiratna-0025/Car-Rental-System.git
 
 
 Open the project in any Java-supported IDE
