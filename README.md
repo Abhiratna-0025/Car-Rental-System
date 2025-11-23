@@ -34,10 +34,9 @@ The **Car Rental System** is a Java-based application with a **Graphical User In
 | Component | Technology |
 |----------|------------|
 | Programming Language | Java |
-| GUI Framework | Swing / JavaFX |
-| Database | MySQL / SQLite |
+| GUI Framework |JavaFX |
+| Database | MySQL|
 | Database Connectivity | JDBC |
-| Architecture | MVC + DAO Pattern |
 | Tools (Recommended) | IntelliJ IDEA / NetBeans / Eclipse |
 
 ---
@@ -58,12 +57,6 @@ The project follows full OOP principles:
 ### 🔹 Multithreading & Synchronization
 - Background threads used for loading data from the database to keep the GUI responsive
 - Synchronization implemented during booking to prevent double-booking of cars
-
-### 🔹 Database Operations (DAO Classes)
-Separate classes for database operations:
-- `CarDAO`
-- `CustomerDAO`
-- `BookingDAO`
 
 Each class handles CRUD operations using reusable methods.
 
