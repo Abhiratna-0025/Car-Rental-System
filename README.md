@@ -66,6 +66,20 @@ Each class handles CRUD operations using reusable methods.
 - SQL Injection prevented using parameterized queries
 - `DBConnection.java` manages database connection handling
 
+
+▶️ How to Run the Project
+
+Clone the repository
+
+git clone https://github.com/your-username/car-rental-system.git
+
+
+Open the project in any Java-supported IDE
+(IntelliJ IDEA, Eclipse, NetBeans, VS Code with Java extension, etc.)
+
+Run the main program
+
+Main.java
 ---
 
 
