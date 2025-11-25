@@ -2,17 +2,35 @@ package com.carrental.model;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a car booking made by a customer.
+ */
 public class Booking {
+    // Unique identifier for the booking
     private int id;
+
+    // Car that is being booked
     private Car car;
+
+    // Customer who made the booking
     private Customer customer;
+
+    // Booking start date
     private LocalDate startDate;
+
+    // Booking end date
     private LocalDate endDate;
+
+    // Total cost for the booking
     private double totalAmount;
+
+    // Status of the booking (e.g., PENDING, BOOKED, CANCELLED, COMPLETED)
     private String status;
 
+    // Default constructor
     public Booking() {}
 
+    // Parameterized constructor
     public Booking(int id, Car car, Customer customer,
                    LocalDate startDate, LocalDate endDate,
                    double totalAmount, String status) {
@@ -25,6 +43,7 @@ public class Booking {
         this.status = status;
     }
 
+    // Getter and setter methods
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -46,6 +65,10 @@ public class Booking {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
+    /**
+     * Returns a string representation of the booking.
+     * Useful for debugging or logging purposes.
+     */
     @Override
     public String toString() {
         return "Booking{" +
