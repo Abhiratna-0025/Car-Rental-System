@@ -1,44 +1,35 @@
-package main;
-
 import dao.BookingDAO;
 import dao.CarDAO;
 import dao.CustomerDAO;
 import model.Car;
 import service.BookingService;
 
-import java.time.LocalDate;
-import java.util.List;
+void main() {
 
-public class MainApp {
+    CarDAO carDAO = new CarDAO();
+    CustomerDAO customerDAO = new CustomerDAO();
+    BookingDAO bookingDAO = new BookingDAO();
+    BookingService bookingService = new BookingService(bookingDAO, carDAO, customerDAO);
 
-    public static void main(String[] args) {
+    // Load cars in a separate thread
+    Thread loadCarsThread = new Thread(() -> {
+        List<Car> cars = carDAO.findAll();
+        IO.println("Available Cars:");
+        for (Car c : cars) {
+            IO.println(c);
+        }
+    });
+    loadCarsThread.start();
 
-        CarDAO carDAO = new CarDAO();
-        CustomerDAO customerDAO = new CustomerDAO();
-        BookingDAO bookingDAO = new BookingDAO();
-        BookingService bookingService = new BookingService(bookingDAO, carDAO, customerDAO);
+    // Two users trying to book the same car
+    Thread user1 = new Thread(() ->
+            bookingService.bookCar(1, 1, LocalDate.now(), LocalDate.now().plusDays(3))
+    );
 
-        // Example: Load all cars in a separate thread (Multithreading)
-        Thread loadCarsThread = new Thread(() -> {
-            List<Car> cars = carDAO.findAll();
-            System.out.println("Available cars:");
-            for (Car c : cars) {
-                System.out.println(c);
-            }
-        });
+    Thread user2 = new Thread(() ->
+            bookingService.bookCar(2, 1, LocalDate.now(), LocalDate.now().plusDays(2))
+    );
 
-        loadCarsThread.start();
-
-        // Example: Two users trying to book same car → synchronized booking
-        Thread user1 = new Thread(() -> {
-            bookingService.bookCar(1, 1, LocalDate.now(), LocalDate.now().plusDays(3));
-        });
-
-        Thread user2 = new Thread(() -> {
-            bookingService.bookCar(2, 1, LocalDate.now(), LocalDate.now().plusDays(2));
-        });
-
-        user1.start();
-        user2.start();
-    }
+    user1.start();
+    user2.start();
 }

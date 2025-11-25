@@ -1,4 +1,4 @@
-CREATE DATABASE car_rental_db;
+CREATE DATABASE car_rental_db
 USE car_rental_db;
 
 CREATE TABLE cars (
@@ -27,3 +27,14 @@ CREATE TABLE bookings (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (car_id) REFERENCES cars(car_id)
 );
+
+USE car_rental_db;
+
+INSERT INTO cars(model, type, rent_per_day, available) VALUES
+('Honda City', 'Sedan', 2500, TRUE),
+('Mahindra XUV 700', 'SUV', 3500, TRUE),
+('Maruti Swift', 'Hatchback', 1800, TRUE);
+
+INSERT INTO customers(name, email, phone) VALUES
+('Ahmed', 'ahmed@gmail.com', '9876543210'),
+('Riya', 'riya@gmail.com', '9876543211');
